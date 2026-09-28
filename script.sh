@@ -1,7 +1,13 @@
 #!/bin/bash
+# Скрипт мониторинга ресурсов
 
+LOG_FILE="monitor.log"
+SLEEP_TIME=5 # Пауза в секундах
 
-echo "--- $(date '+%Y-%m-%d %H:%M:%S') ---" >> monitor.log
-free -h >> monitor.log
-df -h >> monitor.log
-uptime >> monitor.log
+while true; do
+    echo "--- $(date '+%Y-%m-%d %H:%M:%S') ---" >> "$LOG_FILE"
+    free -h >> "$LOG_FILE"
+    df -h >> "$LOG_FILE"
+    uptime >> "$LOG_FILE"
+    sleep $SLEEP_TIME
+done
